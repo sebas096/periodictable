@@ -55,9 +55,9 @@ const elements = [
     status:true,
     position:1,
     scaleArray: [
-      {scaleX: 2},
-      {scaleY: 2},
-      {scaleZ: 2},
+      {scaleX: 3},
+      {scaleY: 3},
+      {scaleZ: 3},
     ],
     periodo:0,
     flayer:"",

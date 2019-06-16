@@ -164,7 +164,7 @@ class Tutorial extends React.Component {
         <Text>
           { this.state.text } 
         </Text>
-        <View>
+        <View style={[styles.tuturialButtons]}>
           <VrButton style={styles.buttonBox}
             onClick={this.handleNext} >
             <Text style={styles.buttonText}>
@@ -209,6 +209,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',   
     justifyContent: 'center',
   },
+  tuturialButtons:
+  {
+    flexDirection: 'row',
+    alignItems: 'center',   
+    justifyContent: 'center',
+  },
   titleTutorialPanel:
   {
 
@@ -219,7 +225,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
     borderColor: '#639dda',
     borderWidth: 2,
-    alignItems: 'center'
+    alignItems: 'center',
+    marginLeft:10
   },
   buttonText:
   {
