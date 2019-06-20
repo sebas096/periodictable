@@ -14,7 +14,6 @@ class Flayer extends React.Component {
     console.log(this.state.translateItems)
   }
   handleClick() {
-    console.log("click");
     this.setState({
       translateItems: [30, 10, 10],
     });
@@ -32,8 +31,6 @@ class Flayer extends React.Component {
     )
   }
 }
-
-
 const styles = StyleSheet.create({
   flayer: {
     width: 550,

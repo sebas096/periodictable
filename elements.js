@@ -60,8 +60,8 @@ const elements = [
       {scaleZ: 3},
     ],
     periodo:0,
-    flayer:"",
-    information:''
+    flayer:"Flayers/potassium.png",
+    information:"It is the seventh most abundant metal in the earth's crust. It constitutes 2.4% by mass. There are deposits of billions of tons of potassium chloride throughout the world. Mining extracts some 35 million tons per year. Potassium salts are also found in the ocean, but in smaller amounts compared to sodium. It is present in fertile soils. Some foods such as instant coffee, sardines, nuts, raisins, potatoes and chocolate have a higher than average potassium content.\n"
   },
 {
     name: 'rubidium',
@@ -722,15 +722,15 @@ const elements = [
   },
  {
     name: 'COPPER',
-    modelPath: './models/mario/mario.glb',
-    texture:"",
+    modelPath: './models/copper/copper.obj',
+    texture:'./models/copper/copper.mtl',
     thumbnail: 'Elementos/copper.png',
     status:true,
     position:1,
     scaleArray: [
-      {scaleX: 0.3},
-      {scaleY: 0.3},
-      {scaleZ: 0.3},
+      {scaleX: 0.8},
+      {scaleY: 0.8},
+      {scaleZ: 0.8},
     ],
     periodo:10,
     flayer:"",

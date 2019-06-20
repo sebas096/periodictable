@@ -80,6 +80,7 @@ class Model extends React.Component {
         <AmbientLight intensity={1.5} color={'#ffffff'} />
         <PointLight
           intensity={2}
+          distance={ 10 }
           style={{transform: [{translate: [0, 0,0]}]}}
         />
         <Animated.View style={{transform: [{scale}]}}>

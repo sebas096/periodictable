@@ -1,9 +1,9 @@
 import React from 'react'
-import { View, VrButton, StyleSheet, Image, asset, Text, TextInput } from 'react-360'
+import { View, VrButton, StyleSheet, Image, asset, Text } from 'react-360'
 import { connect, setElement } from '../store'
 import elements from '../elements'
-const WIDTH = 65
-const HEIGHT = 65
+const WIDTH = 68
+const HEIGHT = 68
 
 class Menu extends React.Component {
   constructor(props) {
@@ -30,21 +30,29 @@ class PeriodicTable extends React.Component {
   constructor(props) {
     super(props);
     this.periodicTable = [
+
       { height: 7 },
       { height: 6 },
       { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 },
       { height: 6 }, { height: 6 }, { height: 6 }, { height: 6 }, { height: 6 },
       { height: 7 },
-    ]
+    ];
+    this.periodo = [1, 2, 3, 4, 5, 6, 7];
   }
 
   render() {
     return (
       <View>
+
         <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
+          <View style={{ width: WIDTH/2, height: 7 * HEIGHT, alignItems: "center",marginTop:HEIGHT/2 + 8 }} >
+            {this.periodo.map((p) => {
+              return (<Text style={{height:HEIGHT}}>{p}</Text>)
+            })}
+          </View>
           {this.periodicTable.map((periodo, index) => {
             return (
-              <View key={index} style={{ width: WIDTH, height: periodo.height * HEIGHT, marginTop: (7 - periodo.height) * WIDTH }} >
+              <View key={index} style={{ width: WIDTH, height: periodo.height * HEIGHT, marginTop: (7 - periodo.height) * WIDTH, alignItems: "center" }} >
                 <Text>{index + 1}</Text>
                 {elements.filter((element) => {
                   return element.periodo === index
@@ -72,7 +80,7 @@ class ElementButton extends React.Component {
     super(props)
     this.state = {
       hover: false,
-      
+
 
     }
     this.handleEnter = this.handleEnter.bind(this)
@@ -106,63 +114,67 @@ class ElementButton extends React.Component {
     )
   }
 }
-
 class Tutorial extends React.Component {
   constructor(props) {
     super(props)
     this.text = [
-      "This is a tutorial about how to play with the 360 enviroment of periodic table You can move around the whole 360 enviroment If yor are using a PC you should click the screen and move If you are using a smarphone you can either move our head around de 360 world or touch the screen and move",
-      "This is an example, click on the elements and move around the 360 enviroment unti you find the 3D element"
+      "Welcome to the virtual environment of periodic table, this is an environment designed to help student to improve their chemistry skills. \nYou can move around the whole 360 environment. \nIf you are using a PC, you should click the screen and move \nIf you are using a smartphone you can either move your head around de 360 world or touch the screen and move.",
+      "A periodic table is shown, where the brightest elements are those that can be used \nBy clicking on the element, you can move through the virtual environment and you will see how different elements appear related to the selected element, such as a 3d model, an image and a flyer.\n Click on next to see an example",
+      "Congratulations\n\n You can move around the 360 environment and you will watch information related to the potassium"
     ];
+    this.pages = 0;
     this.state = {
       hover: false,
-      text:this.text[0],
-      element:false
+      text: this.text[0],
+      element: false,
+      active: 0
     }
-
     this.handleSkip = this.handleSkip.bind(this);
     this.handleNext = this.handleNext.bind(this);
-    
+
     this.element = {
       name: 'POTASSIUM',
       modelPath: './models/banana/banana.obj',
-      texture:"./models/banana/banana.mtl",
+      texture: "./models/banana/banana.mtl",
       thumbnail: 'Elementos/potasio.png',
-      status:true,
-      position:1,
+      status: true,
+      position: 1,
       scaleArray: [
-        {scaleX: 2},
-        {scaleY: 2},
-        {scaleZ: 2},
+        { scaleX: 2 },
+        { scaleY: 2 },
+        { scaleZ: 2 },
       ],
-      periodo:0,
-      flayer:"",
-      information:''
+      periodo: 0,
+      flayer: "",
+      information: ''
     }
-    
   }
-  handleNext = () => 
-  {
-    this.setState(
-      {
-        text:this.text[1],
-        element:true
+  handleNext = () => {
+    if (this.pages < this.text.length) {
+      this.pages += 1;
+      if (this.pages == 2) {
+        setElement(1, this.element);
       }
-    );
-    setElement(1, this.element);
+      this.setState(
+        {
+          text: this.text[this.pages],
+          active: this.pages
+        }
+      );
+    }
   }
   handleSkip = () => {
-    setElement(0,null);
+    setElement(0, null);
     this.props.skip();
   }
   render() {
     return (
       <View style={[styles.tuturialPanel]}>
-        <Text>
+        <Text style={[styles.titleTutorialPanel]}>
           Virtual Enviroment of periodic table
         </Text>
         <Text>
-          { this.state.text } 
+          {this.state.text}
         </Text>
         <View style={[styles.tuturialButtons]}>
           <VrButton style={styles.buttonBox}
@@ -178,11 +190,17 @@ class Tutorial extends React.Component {
             </Text>
           </VrButton>
         </View>
+        <View style={styles.panelPage}>
+          {this.text.map((text, index) => {
+            return (
+              <View style={[styles.pages, this.state.active == index ? styles.active : null]}>
+              </View>)
+          })}
+        </View>
       </View>
     );
   }
 }
-
 const styles = StyleSheet.create({
   menu: {
     //backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -194,30 +212,53 @@ const styles = StyleSheet.create({
   },
   menu2:
   {
-    backgroundColor: 'rgba(255, 0, 0, 0.5)',
+    //backgroundColor: 'rgba(255, 0, 0, 0.5)',
     paddingTop: 30,
     marginLeft: WIDTH * 2,
     width: WIDTH * 14,
   },
   tuturialPanel:
   {
-    width: 800,
-    height: 450,
+    width: 900,
+    height: 400,
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'center',   
+    alignItems: 'center',
     justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 20
   },
   tuturialButtons:
   {
+    justifyContent: 'space-between',
     flexDirection: 'row',
-    alignItems: 'center',   
-    justifyContent: 'center',
+    alignItems: 'center',
+    width: 600,
   },
   titleTutorialPanel:
   {
-
+    fontSize: 30
+  },
+  panelPage:
+  {
+    width: 600,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pages:
+  {
+    height: 25,
+    width: 25,
+    borderRadius: 20,
+    backgroundColor: '#DFDFDF',
+    alignItems: 'center',
+    marginLeft: 6
+  },
+  active:
+  {
+    backgroundColor: '#C3C3C3',
   },
   buttonBox:
   {
@@ -226,7 +267,10 @@ const styles = StyleSheet.create({
     borderColor: '#639dda',
     borderWidth: 2,
     alignItems: 'center',
-    marginLeft:10
+    marginLeft: 10,
+    height: 80,
+    width: 120,
+    borderRadius: 8,
   },
   buttonText:
   {
@@ -247,7 +291,5 @@ const styles = StyleSheet.create({
     ],
   }
 });
-
 const ConnectedMenu = connect(Menu);
-
 export default ConnectedMenu;
