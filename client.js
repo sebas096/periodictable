@@ -1,4 +1,7 @@
 import { ReactInstance, Location, Surface } from 'react-360-web';
+import SimpleRaycaster from 'simple-raycaster';
+import WebVRPolyfill from "webvr-polyfill";
+const polyfill = new WebVRPolyfill();
 
 function init(bundle, parent, options = {}) {
   const r360 = new ReactInstance(bundle, parent, {
@@ -26,7 +29,7 @@ function init(bundle, parent, options = {}) {
   );
 
 
-  const information = new Surface(900, 900, Surface.SurfaceShape.Flat);
+  const information = new Surface(1000, 1000, Surface.SurfaceShape.Flat);
   information.setAngle(3.3, 0, 0);
   r360.renderToSurface(
     r360.createRoot('information'),
@@ -45,8 +48,33 @@ function init(bundle, parent, options = {}) {
     new Location([8, 0, 4]),
   );
 
+  // if ('DeviceOrientationEvent' in window &&
+  //   /Mobi/i.test(navigator.userAgent) &&
+  //   !/OculusBrowser/i.test(navigator.userAgent)) {
+  //  r360.controls.clearRaycasters();
+   // r360.controls.addRaycaster(SimpleRaycaster);
+   if(('DeviceOrientationEvent' in window))
+   {
+     alert("Orientation Device");
+   }
+   if( (/Mobi/i.test(navigator.userAgent)))
+   {
+     alert("in mobile")
+   }
+   if(!(/OculusBrowser/i.test(navigator.userAgent)))
+   {
+     alert("not oculus device");
+   }
+   //r360.compositor.setBackground(r360.getAssetURL('360_world.jpg'));
+  // else
+  // {
+    r360.compositor.setBackground(r360.getAssetURL('360_worl_edited.jpg'));
+  //   console.log("PC");
+  // }
+  console.log(navigator.userAgent + "hola");
   // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL('360_worl_edited.jpg'));
+
+
 }
 
 window.React360 = { init };

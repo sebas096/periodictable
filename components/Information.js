@@ -113,26 +113,23 @@ class Information extends React.Component {
       hover: false
     })
   }
-componentDidUpdate()
-{
-}
+  componentDidUpdate() {
+  }
   render() {
     return (
       <View>
-        { this.props.elementDetails &&
-      <View style={[styles.informationView, this.state.hover ? styles.viewHover : null]}
-        onEnter={this.handleEnter}
-        onExit={this.handleExit}
-      >
-        <Text style={[styles.title, this.state.hover ? styles.titleHover : null]}>
-          
-          { this.props.elementDetails.name}
-         
-        </Text>
-        <Text style={[styles.informationText, this.state.hover ? styles.textHover : null]}>
-          {this.textJustification(this.props.elementDetails.information, 50)}
-        </Text>
-      </View>
+        {this.props.elementDetails &&
+          <View style={[styles.informationView, this.state.hover ? styles.viewHover : null]}
+            onEnter={this.handleEnter}
+            onExit={this.handleExit}
+          >
+            <Text style={[styles.title, this.state.hover ? styles.titleHover : null]}>
+              {this.props.elementDetails.name}
+            </Text>
+            <Text style={[styles.informationText, this.state.hover ? styles.textHover : null]}>
+              {this.textJustification(this.props.elementDetails.information, 50)}
+            </Text>
+          </View>
         }
       </View>
     )
@@ -141,7 +138,6 @@ componentDidUpdate()
 const styles = StyleSheet.create({
   informationView: {
     width: 640,
-    height: 640,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     borderColor: 'white',
     borderWidth: 5,
@@ -156,12 +152,12 @@ const styles = StyleSheet.create({
   informationText:
   {
     fontSize: 28,
+    color: "#FFF",
   },
   viewHover:
   {
     width: 630 * (1 + 0.4),
-    height: 630 * (1 + 0.4),
-
+    height: 640 * (1 + 0.4),
   },
   textHover:
   {
@@ -178,7 +174,5 @@ const styles = StyleSheet.create({
     fontSize: 40 * (1 + 0.4)
   }
 });
-
 const ConnectedInformation = connect(Information);
-
 export default ConnectedInformation;

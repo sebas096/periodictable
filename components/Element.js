@@ -14,12 +14,16 @@ class Element extends React.Component {
     this.handleButtonUp = this.handleButtonUp.bind(this);
 
   }
-  handleEnter()
-  {
-    Animated.timing(this.state.animation, {
-      toValue: 1,
-      duration: 100,
-    }).start();
+  handleEnter() {
+    // Animated.timing(this.state.animation, {
+    //   toValue: 1,
+    //   duration: 100,
+    // }).start();
+    this.setState(
+      {
+        hover: true
+      }
+    );
   }
 
   handleButtonUp = () => {
@@ -46,7 +50,7 @@ class Element extends React.Component {
         outputRange: [12, 16],
       }),
     }; */
-  
+
 
     return (
       // <View style={styles.button} onEnter={this.handleClick} onExit={this.handleButtonUp}>
@@ -58,10 +62,21 @@ class Element extends React.Component {
       //     </Animated.View>
       //   </View>
       // </View>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        { this.props.elementDetails && <Image style={[styles.image]}
-          source={asset(this.props.elementDetails.thumbnail)}
-        />}
+      <View>
+        {this.props.elementDetails &&
+          <View>
+            <View style={{ flex: 1, flexDirection: 'row' }}
+              onEnter={this.handleEnter}
+              onExit={this.handleExit}>
+              <Image style={[styles.image]}
+                source={asset(this.props.elementDetails.thumbnail)}
+              />
+            </View>
+            <View style={styles.info}>
+              <Text style={[styles.white]}>Atomic number</Text>
+              <Text style={[styles.white]}>Atomic weight</Text>
+            </View>
+          </View>}
       </View>
       // <View style={styles.container} >
       //   <Text style={styles.element}>S</Text>
@@ -108,13 +123,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
+  info:
+  {
+    width: 350,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'stretch',
+  },
+  text:
+  {
+    fontSize: 27
+  },
   pesoAtomico:
   {
-
+    marginRight: 2
   },
   numeroAtomico:
   {
-    backgroundColor: 'rgba(145, 150, 150, 1)',
     marginRight: 2
   },
   imageHover: {
@@ -135,7 +160,7 @@ const styles = StyleSheet.create({
   white: {
     color: "#FFF",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 26,
   },
 });
 
