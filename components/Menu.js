@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, VrButton, StyleSheet, Image, asset, Text } from 'react-360'
+import { View, VrButton, StyleSheet, Image, asset, Text ,NativeModules} from 'react-360'
 import { connect, setElement } from '../store'
 import elements from '../elements'
+const {AudioModule} = NativeModules;
 const WIDTH = 68
 const HEIGHT = 68
 
@@ -47,13 +48,13 @@ class PeriodicTable extends React.Component {
         <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
           <View style={{ width: WIDTH/2, height: 7 * HEIGHT, alignItems: "center",marginTop:HEIGHT/2 + 8 }} >
             {this.periodo.map((p) => {
-              return (<Text style={{height:HEIGHT}}>{p}</Text>)
+              return (<Text style={[styles.white,{height:HEIGHT}]}>{p}</Text>)
             })}
           </View>
           {this.periodicTable.map((periodo, index) => {
             return (
               <View key={index} style={{ width: WIDTH, height: periodo.height * HEIGHT, marginTop: (7 - periodo.height) * WIDTH, alignItems: "center" }} >
-                <Text>{index + 1}</Text>
+                <Text style={styles.white}>{index + 1}</Text>
                 {elements.filter((element) => {
                   return element.periodo === index
                 }).map((element, index2) => {
@@ -98,7 +99,13 @@ class ElementButton extends React.Component {
     })
   }
   handleClick() {
-    setElement(this.props.index, this.props.element);
+    if(this.props.element.status)
+    {
+      AudioModule.playOneShot({
+        source: asset('element.mp3'),
+      });
+      setElement(this.props.index, this.props.element);
+    }
   }
   render() {
     const { element } = this.props
@@ -173,20 +180,20 @@ class Tutorial extends React.Component {
         <Text style={[styles.titleTutorialPanel]}>
           Virtual Enviroment of periodic table
         </Text>
-        <Text>
+        <Text style={[styles.textPanel]}>
           {this.state.text}
         </Text>
         <View style={[styles.tuturialButtons]}>
           <VrButton style={styles.buttonBox}
-            onClick={this.handleNext} >
-            <Text style={styles.buttonText}>
-              Next
-            </Text>
-          </VrButton>
-          <VrButton style={styles.buttonBox}
             onClick={this.handleSkip}>
             <Text style={styles.buttonText}>
               Skip
+            </Text>
+          </VrButton>
+          <VrButton style={styles.buttonBox}
+            onClick={this.handleNext} >
+            <Text style={styles.buttonText}>
+              Next
             </Text>
           </VrButton>
         </View>
@@ -219,6 +226,7 @@ const styles = StyleSheet.create({
   },
   tuturialPanel:
   {
+    padding:20,
     width: 900,
     height: 400,
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
@@ -226,8 +234,13 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 30,
     marginBottom: 20
+  },
+  white: {
+    color: "#FFF",
+    fontWeight: "bold",
+    fontSize: 23,
   },
   tuturialButtons:
   {
@@ -238,10 +251,16 @@ const styles = StyleSheet.create({
   },
   titleTutorialPanel:
   {
-    fontSize: 30
+    fontSize: 30,
+    marginTop:20
+  },
+  textPanel:
+  {
+    marginTop:20
   },
   panelPage:
   {
+    marginTop:30,
     width: 600,
     flexDirection: 'row',
     alignItems: 'center',
@@ -262,19 +281,19 @@ const styles = StyleSheet.create({
   },
   buttonBox:
   {
-    padding: 20,
+    padding: 12,
     backgroundColor: '#000000',
     borderColor: '#639dda',
     borderWidth: 2,
     alignItems: 'center',
     marginLeft: 10,
-    height: 80,
-    width: 120,
-    borderRadius: 8,
+    height: 60,
+    width: 90,
+    borderRadius: 9,
   },
   buttonText:
   {
-    fontSize: 30,
+    fontSize: 22,
   },
   image: {
     width: WIDTH,

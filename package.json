@@ -2,6 +2,12 @@
   "name": "PeriodicTable",
   "version": "0.0.1",
   "private": true,
+  "authors": {
+    "name1": "Sebastian Posada Calderon",
+    "name2": "Yohana Monsalve Suarez",
+    "email1": "sebastian_posada82132@elpoli.edu.co",
+    "email2": "yohana_monsalve"
+  },
   "scripts": {
     "start": "node -e \"console.log('open browser at http://localhost:8081/index.html\\n\\n');\" && node node_modules/react-native/local-cli/cli.js start",
     "bundle": "node node_modules/react-360/scripts/bundle.js",
@@ -14,7 +20,9 @@
     "react-360": "^1.1.0",
     "react-360-web": "^1.1.0",
     "react-native": "~0.55.4",
-    "three": "^0.87.0"
+    "simple-raycaster": "^1.1.0",
+    "three": "^0.87.0",
+    "webvr-polyfill": "^0.10.7"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
