@@ -1169,8 +1169,8 @@ const elements = [{
     },
     {
         name: 'SULFUR',
-        modelPath: './models/huevo/huevo.obj',
-        texture: "./models/huevo/huevo.mtl",
+        modelPath: './models/huevo/huevoNuevo.obj',
+        texture: "./models/huevo/huevoNuevo.mtl",
         thumbnail: 'Elementos/sulfur.png',
         status: true,
         position: 1,
