@@ -1459,7 +1459,466 @@ const elements = [
     periodo: 17,
     flayer: "",
     information: ''
+  },
+  //nuevos
+  {
+    name: 'CERIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/cerium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'PRASEODYMIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/praseodymium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'NEODYMIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/neodymium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'PROMETHIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/promethium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'SAMARIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/samarium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'EUROPIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/europium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'GADOLINIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/gadolinium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'TERBIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/terbium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'DYSPROSIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/dysprosium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'HOLMIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/holmium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'ERBIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/Erbium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'THULIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/thulium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'YTTERBIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/ytterbium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'LUTETIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/lutetium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 18,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'THORIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/thorium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'PROTACTINIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/protactinium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'URANIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/uranium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'NEPTUNIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/neptunium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'PLUTONIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/plutonium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'AMERICIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/americium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'CURIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/curium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'BERKELIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/berkelium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'CALIFORNIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/californium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'EINSTEINIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/einsteinium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'FERMIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/fermium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'MENDELEVIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/mendelevium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'NOBELIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/nobelium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
+  },
+  {
+    name: 'LAWRENCIUM',
+    modelPath: './models/mario/mario.glb',
+    texture: "",
+    thumbnail: 'Elementos/lawrencium.png',
+    status: false,
+    position: 1,
+    scaleArray: [
+      { scaleX: 0.3 },
+      { scaleY: 0.3 },
+      { scaleZ: 0.3 },
+    ],
+    periodo: 19,
+    flayer: "",
+    information: ''
   }
+
+
+
+
+
+
+
+
+
+
 ]
 
 export default elements;

@@ -1,10 +1,13 @@
 import React from 'react'
-import { View, VrButton, StyleSheet, Image, asset, Text ,NativeModules} from 'react-360'
+import { View, VrButton, StyleSheet, Image, asset, Text, NativeModules } from 'react-360'
 import { connect, setElement } from '../store'
 import elements from '../elements'
-const {AudioModule} = NativeModules;
+import GazeButton from './GazeButton';
+const { AudioModule } = NativeModules;
 const WIDTH = 68
 const HEIGHT = 68
+const DURATION  = 2500
+
 
 class Menu extends React.Component {
   constructor(props) {
@@ -13,16 +16,22 @@ class Menu extends React.Component {
       tutorial: true
     }
     this.handleSkip = this.handleSkip.bind(this);
+    this.handleHelpClick = this.handleHelpClick.bind(this);
   }
   handleSkip() {
     this.setState({
       tutorial: false
     })
   }
+  handleHelpClick() {
+    this.setState({
+      tutorial: true
+    })
+  }
   render() {
     return (
       <View>
-        {this.state.tutorial ? <Tutorial skip={this.handleSkip} /> : <PeriodicTable />}
+        {this.state.tutorial ? <Tutorial skip={this.handleSkip} /> : <PeriodicTable help={this.handleHelpClick} />}
       </View>
     )
   }
@@ -39,16 +48,20 @@ class PeriodicTable extends React.Component {
       { height: 7 },
     ];
     this.periodo = [1, 2, 3, 4, 5, 6, 7];
+    this.handleHelpClick = this.handleHelpClick.bind(this);
   }
-
+  handleHelpClick() {
+    setElement(0, null);
+    this.props.help();
+  }
   render() {
     return (
       <View>
 
         <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
-          <View style={{ width: WIDTH/2, height: 7 * HEIGHT, alignItems: "center",marginTop:HEIGHT/2 + 8 }} >
+          <View style={{ width: WIDTH / 2, height: 7 * HEIGHT, alignItems: "center", marginTop: HEIGHT / 2 + 8 }} >
             {this.periodo.map((p) => {
-              return (<Text style={[styles.white,{height:HEIGHT}]}>{p}</Text>)
+              return (<Text style={[styles.white, { height: HEIGHT }]}>{p}</Text>)
             })}
           </View>
           {this.periodicTable.map((periodo, index) => {
@@ -63,12 +76,33 @@ class PeriodicTable extends React.Component {
               </View>)
           })
           }
+          <GazeButton onClick={this.handleHelpClick}
+          duration={DURATION}>
+            <View style={styles.buttonHelp}>
+              <Text style={{ fontSize: 30 }}>?</Text>
+            </View>
+          </GazeButton>
+          <GazeButton onClick={this.handleHelpClick}
+          duration={DURATION}>
+            <View style={styles.buttonAbout}>
+              <Text style={{ fontSize: 30 }}>A</Text>
+            </View>
+          </GazeButton>
         </View>
         {<View style={styles.menu2}>
           <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
+            {elements.filter((element) => {
+              return element.periodo === 18
+            }).map((element, index2) => { 
+              return (<ElementButton key={"KEY" + index2} element={element} index={index2} />)
+            })}
           </View>
           <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
-
+            {elements.filter((element) => {
+              return element.periodo === 19
+            }).map((element, index2) => {
+              return (<ElementButton key={"KEY" + index2} element={element} index={index2} />)
+            })}
           </View>
         </View>}
       </View>
@@ -81,8 +115,6 @@ class ElementButton extends React.Component {
     super(props)
     this.state = {
       hover: false,
-
-
     }
     this.handleEnter = this.handleEnter.bind(this)
     this.handleExit = this.handleExit.bind(this)
@@ -99,8 +131,7 @@ class ElementButton extends React.Component {
     })
   }
   handleClick() {
-    if(this.props.element.status)
-    {
+    if (this.props.element.status) {
       AudioModule.playOneShot({
         source: asset('element.mp3'),
       });
@@ -111,13 +142,14 @@ class ElementButton extends React.Component {
     const { element } = this.props
     const hover = this.state.hover
     return (
-      <VrButton onEnter={this.handleEnter}
+      <GazeButton onEnter={this.handleEnter}
+        duration={DURATION}
         onExit={this.handleExit}
         onClick={this.handleClick}>
         <Image style={[styles.image, hover && element.status ? styles.imageHover : null, element.status ? null : styles.disabledImage]}
           source={asset(element.thumbnail)}
         />
-      </VrButton>
+      </GazeButton>
     )
   }
 }
@@ -184,18 +216,20 @@ class Tutorial extends React.Component {
           {this.state.text}
         </Text>
         <View style={[styles.tuturialButtons]}>
-          <VrButton style={styles.buttonBox}
-            onClick={this.handleSkip}>
+          <GazeButton style={styles.buttonBox}
+            onClick={this.handleSkip}
+            duration={DURATION}>
             <Text style={styles.buttonText}>
               Skip
             </Text>
-          </VrButton>
-          <VrButton style={styles.buttonBox}
+          </GazeButton>
+          <GazeButton style={styles.buttonBox}
+            duration={DURATION}
             onClick={this.handleNext} >
             <Text style={styles.buttonText}>
               Next
             </Text>
-          </VrButton>
+          </GazeButton>
         </View>
         <View style={styles.panelPage}>
           {this.text.map((text, index) => {
@@ -220,13 +254,13 @@ const styles = StyleSheet.create({
   menu2:
   {
     //backgroundColor: 'rgba(255, 0, 0, 0.5)',
-    paddingTop: 30,
-    marginLeft: WIDTH * 2,
-    width: WIDTH * 14,
+    paddingTop: 15,
+    marginLeft: WIDTH * 2.5,
+    width: WIDTH * 15,
   },
   tuturialPanel:
   {
-    padding:20,
+    padding: 20,
     width: 900,
     height: 400,
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
@@ -249,22 +283,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: 600,
   },
+
   titleTutorialPanel:
   {
     fontSize: 30,
-    marginTop:20
+    marginTop: 20
   },
   textPanel:
   {
-    marginTop:20
+    marginTop: 20
   },
   panelPage:
   {
-    marginTop:30,
+    marginTop: 30,
     width: 600,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  buttonHelp:
+  {
+    height: 35,
+    width: 35,
+    borderRadius: 20,
+    backgroundColor: '#DFDFDF',
+    opacity: 0.8,
+    alignItems: 'center',
+    marginLeft: 30
+  },
+  buttonAbout:
+  {
+    height: 35,
+    width: 35,
+    borderRadius: 20,
+    backgroundColor: '#DFDFDF',
+    opacity: 0.8,
+    alignItems: 'center',
+    marginLeft: 5
   },
   pages:
   {
@@ -302,7 +357,7 @@ const styles = StyleSheet.create({
     marginRight: 1
   },
   disabledImage: {
-    opacity: 0.8
+    opacity: 0.85
   },
   imageHover: {
     transform: [

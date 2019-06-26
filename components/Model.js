@@ -1,5 +1,5 @@
 import React from 'react'
-import { asset, View, Animated, Text } from 'react-360'
+import { asset, View, Animated, Text, StyleSheet } from 'react-360'
 import Entity from 'Entity'
 import AmbientLight from 'AmbientLight'
 import PointLight from 'PointLight'
@@ -95,5 +95,16 @@ class Model extends React.Component {
     );
   }
 };
+const styles = StyleSheet.create({
+  menu: {
+    backgroundColor: 'rgba(250, 2, 2, 0.5)',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    paddingTop: 30,
+    height:600
+    
+  }});
 const ConnectedModel = connect(Model);
 export default ConnectedModel;
