@@ -6,9 +6,9 @@ const elements = [{
         status: true,
         position: 1,
         scaleArray: [
-            { scaleX: 0.3 },
-            { scaleY: 0.3 },
-            { scaleZ: 0.3 },
+            { scaleX: 0.7 },
+            { scaleY: 0.7 },
+            { scaleZ: 0.7 },
         ],
         periodo: 0,
         flayer: "Flayers/hydrogen.png",
@@ -1908,16 +1908,5 @@ const elements = [{
     flayer: "",
     information: ''
   }
-
-
-
-
-
-
-
-
-
-
 ]
-
 export default elements;
