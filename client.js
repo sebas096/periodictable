@@ -25,22 +25,7 @@ function init(bundle, parent, options = {}) {
   const r360 = new ReactInstance(bundle, parent, {
     // Add custom options here
     fullScreen: true,
-    // frame: () => {
-    //   const cameraQuat = r360.getCameraQuaternion();
-    //   cameraDirection[0] = 0;
-    //   cameraDirection[1] = 0;
-    //   cameraDirection[2] = -1;
-    //   // cameraDirection will point out from the view of the camera,
-    //   // we can use it to compute surface angles
-    //   VRMath.rotateByQuaternion(cameraDirection, cameraQuat);
-    //   const cx = cameraDirection[0];
-    //   const cy = cameraDirection[1];
-    //   const cz = cameraDirection[2];
-    //   const horizAngle = Math.atan2(cx, -cz);
-    //   const vertAngle = Math.asin(cy / Math.sqrt(cx * cx + cy * cy + cz * cz));
-    //   horizontalPanel.setAngle(horizAngle, -0.5);
-    //   hvPanel.setAngle(horizAngle, vertAngle);
-    // },
+    hideFullscreen: false,
     ...options,
   });
   // r360.renderToLocation(r360.createRoot('background'),
@@ -74,10 +59,10 @@ function init(bundle, parent, options = {}) {
     new Location([8, -1, 4]),
   );
   r360.compositor.setBackground(r360.getAssetURL('360_worl_edited.jpg'));
-   if((/Mobi/i.test(navigator.userAgent)) || true)
+   if((/Mobi/i.test(navigator.userAgent)))
    {
-      r360.controls.clearRaycasters();
-      r360.controls.addRaycaster(SimpleRaycaster);
+     r360.controls.clearRaycasters();
+     r360.controls.addRaycaster(SimpleRaycaster);
    }
 }
 window.React360 = { init };

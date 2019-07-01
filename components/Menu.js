@@ -224,11 +224,11 @@ class Tutorial extends React.Component {
   render() {
     return (
       <View style={[styles.tuturialPanel]}>
-        <View style={{ height: 15, width: 850, flexDirection: 'row', justifyContent: 'flex-end', }}>
-          <GazeButton
+        <View style={{ height: 15, width: 880, flexDirection: 'row', justifyContent: 'flex-end', }}>
+          <GazeButton style={styles.buttonClose}
             duration={DURATION}
             onClick={this.handleSkip}>
-            <Text>
+            <Text style={styles.buttonText}>
               X
           </Text>
           </GazeButton>
@@ -367,9 +367,14 @@ const styles = StyleSheet.create({
     width: 75,
     borderRadius: 9,
   },
+  buttonClose:
+  {
+    height: 50,
+    width: 30,
+  },
   buttonText:
   {
-    fontSize: 20,
+    fontSize: 25,
   },
   image: {
     width: WIDTH,
