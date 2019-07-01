@@ -33,8 +33,8 @@ const elements = [{
     },
     {
         name: 'SODIUM',
-        modelPath: './models/sodium/sodio.obj',
-        texture: './models/sodium/sodio.mtl',
+        modelPath: './models/sodium/sodioNuevo.obj',
+        texture: './models/sodium/sodioNuevo.mtl',
         thumbnail: 'Elementos/sodium.png',
         status: true,
         position: 1,
@@ -132,8 +132,8 @@ const elements = [{
     },
     {
         name: 'MAGNESIUM',
-        modelPath: './models/magnesium/sacaPuntas.obj',
-        texture: "./models/magnesium/sacaPuntas.mtl",
+        modelPath: './models/magnesium/sacaPuntas1.obj',
+        texture: "./models/magnesium/sacaPuntas1.mtl",
         thumbnail: 'Elementos/magnesium.png',
         status: true,
         position: 1,
@@ -471,8 +471,8 @@ const elements = [{
     },
     {
         name: 'MANGANESE',
-        modelPath: './models/mario/mario.glb',
-        texture: "",
+        modelPath: './models/manganese/cocoNuevo.obj',
+        texture: "./models/manganese/cocoNuevo.mtl",
         thumbnail: 'Elementos/manganese.png',
         status: true,
         position: 1,
