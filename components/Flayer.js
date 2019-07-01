@@ -16,20 +16,19 @@ class Flayer extends React.Component {
   handleClick() {
     NativeModules.LinkingManager.openURL('https://docs.google.com/forms/d/e/1FAIpQLSd4WeR7KbXtMPnUqOR2dRX2W33KavSAeJIhly-1-nu0RFAtAw/viewform')
   }
-
   render() {
     return (
       <View>
         {this.props.elementDetails &&
           <View style={styles.container}>
-            <VrButton onClick={this.handleClick} style={styles.button}>
-              <Text>Click para la encuesta</Text>
-            </VrButton>
             <View style={[styles.flayer]}>
               <Image style={[styles.image]}
                 source={asset(this.props.elementDetails.flayer)}
               />
             </View>
+            <VrButton onClick={this.handleClick} style={styles.button}>
+              <Text>Click para la encuesta</Text>
+            </VrButton>
           </View>
         }
       </View>

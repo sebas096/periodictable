@@ -17,7 +17,7 @@ const SimpleRaycaster = {
     return true;
   },
   getMaxLength: () => Infinity,
-  getType: () => "simple",
+  getType: () => "cursor",
   hasAbsoluteCoordinates: () => false
 };
 
@@ -74,7 +74,7 @@ function init(bundle, parent, options = {}) {
     new Location([8, -1, 4]),
   );
   r360.compositor.setBackground(r360.getAssetURL('360_worl_edited.jpg'));
-   if((/Mobi/i.test(navigator.userAgent)))
+   if((/Mobi/i.test(navigator.userAgent)) || true)
    {
       r360.controls.clearRaycasters();
       r360.controls.addRaycaster(SimpleRaycaster);

@@ -6,7 +6,7 @@ import GazeButton from './GazeButton';
 const { AudioModule } = NativeModules;
 const WIDTH = 68
 const HEIGHT = 68
-const DURATION  = 2500
+const DURATION = 2500
 
 
 class Menu extends React.Component {
@@ -40,7 +40,6 @@ class PeriodicTable extends React.Component {
   constructor(props) {
     super(props);
     this.periodicTable = [
-
       { height: 7 },
       { height: 6 },
       { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 }, { height: 4 },
@@ -57,7 +56,6 @@ class PeriodicTable extends React.Component {
   render() {
     return (
       <View>
-
         <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
           <View style={{ width: WIDTH / 2, height: 7 * HEIGHT, alignItems: "center", marginTop: HEIGHT / 2 + 8 }} >
             {this.periodo.map((p) => {
@@ -77,13 +75,13 @@ class PeriodicTable extends React.Component {
           })
           }
           <GazeButton onClick={this.handleHelpClick}
-          duration={DURATION}>
+            duration={DURATION}>
             <View style={styles.buttonHelp}>
               <Text style={{ fontSize: 30 }}>?</Text>
             </View>
           </GazeButton>
           <GazeButton onClick={this.handleHelpClick}
-          duration={DURATION}>
+            duration={DURATION}>
             <View style={styles.buttonAbout}>
               <Text style={{ fontSize: 30 }}>A</Text>
             </View>
@@ -93,7 +91,7 @@ class PeriodicTable extends React.Component {
           <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
             {elements.filter((element) => {
               return element.periodo === 18
-            }).map((element, index2) => { 
+            }).map((element, index2) => {
               return (<ElementButton key={"KEY" + index2} element={element} index={index2} />)
             })}
           </View>
@@ -157,9 +155,11 @@ class Tutorial extends React.Component {
   constructor(props) {
     super(props)
     this.text = [
-      "Welcome to the virtual environment of periodic table, this is an environment designed to help student to improve their chemistry skills. \nYou can move around the whole 360 environment. \nIf you are using a PC, you should click the screen and move \nIf you are using a smartphone you can either move your head around de 360 world or touch the screen and move.",
-      "A periodic table is shown, where the brightest elements are those that can be used \nBy clicking on the element, you can move through the virtual environment and you will see how different elements appear related to the selected element, such as a 3d model, an image and a flyer.\n Click on next to see an example",
-      "Congratulations\n\n You can move around the 360 environment and you will watch information related to the potassium"
+      "Welcome to the virtual environment of periodic table, this is an environment designed to help students to improve their chemistry skills. \nYou can move on around the whole 360 environment. \nIf you are using a PC, you should click on the screen and move on\nIf you are using a smartphone you can either move your smartphone around de 360 world" 
+      + "or touch the screen and move on\n",
+      "If you are using a virtual reality device (HDM) or your phone has activated the  virtual reality option and you have an extension like Google Cardboard, you can move your head around the virtual environment. \nalso, you can use the  raycaster to  select the elements of the virtual environment",
+      "A periodic table is shown, where the brightest elements are those that might be used \nBy clicking on the element, you can move on through the virtual environment and you will watch how these elements can be associated to the selected element, such as a 3d model, an image and a flyer.\n continue to watch an example",
+      "Congratulations\n\n You can move on around the 360 environment and you will watch information related to the potassium"
     ];
     this.pages = 0;
     this.state = {
@@ -170,6 +170,7 @@ class Tutorial extends React.Component {
     }
     this.handleSkip = this.handleSkip.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.handleBack = this.handleBack.bind(this);
 
     this.element = {
       name: 'POTASSIUM',
@@ -189,10 +190,24 @@ class Tutorial extends React.Component {
     }
   }
   handleNext = () => {
-    if (this.pages < this.text.length) {
+    if (this.pages < this.text.length - 1) {
       this.pages += 1;
       if (this.pages == 2) {
         setElement(1, this.element);
+      }
+      this.setState(
+        {
+          text: this.text[this.pages],
+          active: this.pages
+        }
+      );
+    }
+  }
+  handleBack = () => {
+    if (this.pages > 0) {
+      this.pages -= 1;
+      if (this.pages != 2) {
+        setElement(0, null);
       }
       this.setState(
         {
@@ -209,26 +224,31 @@ class Tutorial extends React.Component {
   render() {
     return (
       <View style={[styles.tuturialPanel]}>
+        <View style={{ height: 15, width: 850, flexDirection: 'row', justifyContent: 'flex-end', }}>
+          <GazeButton
+            duration={DURATION}
+            onClick={this.handleSkip}>
+            <Text>
+              X
+          </Text>
+          </GazeButton>
+        </View>
         <Text style={[styles.titleTutorialPanel]}>
-          Virtual Enviroment of periodic table
+          Virtual Enviroment of Periodic Table
         </Text>
         <Text style={[styles.textPanel]}>
           {this.state.text}
         </Text>
         <View style={[styles.tuturialButtons]}>
           <GazeButton style={styles.buttonBox}
-            onClick={this.handleSkip}
-            duration={DURATION}>
-            <Text style={styles.buttonText}>
-              Skip
-            </Text>
+            duration={DURATION}
+            onClick={this.handleBack}>
+            <Image source={asset("Flecha_left.png")} style={{ width: 60, height: 45 }} />
           </GazeButton>
           <GazeButton style={styles.buttonBox}
             duration={DURATION}
             onClick={this.handleNext} >
-            <Text style={styles.buttonText}>
-              Next
-            </Text>
+            <Image source={asset("Flecha.png")} style={{ width: 60, height: 45 }} />
           </GazeButton>
         </View>
         <View style={styles.panelPage}>
@@ -260,7 +280,7 @@ const styles = StyleSheet.create({
   },
   tuturialPanel:
   {
-    padding: 20,
+    padding: 3,
     width: 900,
     height: 400,
     backgroundColor: 'rgba(255, 255, 255, 0.4)',
@@ -268,7 +288,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 30,
     marginBottom: 20
   },
   white: {
@@ -281,17 +300,20 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     alignItems: 'center',
-    width: 600,
+    width: 400,
   },
 
   titleTutorialPanel:
   {
-    fontSize: 30,
-    marginTop: 20
+    fontSize: 33,
+    marginTop: 23,
+    fontWeight: "bold"
   },
   textPanel:
   {
-    marginTop: 20
+    marginTop: 20,
+    width: 840,
+    height:145
   },
   panelPage:
   {
@@ -332,23 +354,22 @@ const styles = StyleSheet.create({
   },
   active:
   {
-    backgroundColor: '#C3C3C3',
+    backgroundColor: '#808080',
   },
   buttonBox:
   {
-    padding: 12,
     backgroundColor: '#000000',
     borderColor: '#639dda',
     borderWidth: 2,
     alignItems: 'center',
     marginLeft: 10,
-    height: 60,
-    width: 90,
+    height: 50,
+    width: 75,
     borderRadius: 9,
   },
   buttonText:
   {
-    fontSize: 22,
+    fontSize: 20,
   },
   image: {
     width: WIDTH,

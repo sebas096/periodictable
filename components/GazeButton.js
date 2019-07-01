@@ -43,7 +43,9 @@ export default class GazeButton extends React.Component {
     this.setState(
       () => ({ isGazed: false, remainingTime: 0, gazeTimestamp: null }),
       () => {
-        onClick();
+        if (onClick) {
+          onClick();
+        }
       }
     );
   };
