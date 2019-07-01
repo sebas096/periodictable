@@ -957,8 +957,8 @@ const elements = [{
     },
     {
         name: 'CARBON',
-        modelPath: './models/carbon/pencil.obj',
-        texture: './models/carbon/pencil.mtl',
+        modelPath: './models/carbon/Pencil.obj',
+        texture: './models/carbon/Pencil.mtl',
         thumbnail: 'Elementos/carbon.png',
         status: true,
         position: 1,

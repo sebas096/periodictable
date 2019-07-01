@@ -1,6 +1,6 @@
 import { Math as VRMath,ReactInstance, Location, Surface } from 'react-360-web';
-import WebVRPolyfill from './components/polyfill';
-// import SimpleRaycaster from 'simple-raycaster';
+import WebVRPolyfill from 'webvr-polyfill';
+
 const polyfill = new WebVRPolyfill();
 const SimpleRaycaster = {
   drawsCursor: () => true,
