@@ -161,8 +161,8 @@ const elements = [{
         ],
         periodo: 1,
         flayer: "Flayers/calcium.png",
-        information: "It is the fifth most abundant metal in the earth's crust (4.1%). It is not uncombined in nature, but is abundantly present as limestone (calcium carbonate), gypsum (calcium sulfate), fluorite (calcium fluoride) and apatite (calcium chlorine-phosphate or calcium fluorophosphate). Hard water contains dissolved calcium bicarbonate. When this seeps through the soil and reaches a cave, it rushes to form stalactites and stalagmites. The average human contains approximately one kilogram of calcium\n" +
-            "Calcium is essential for all living beings, particularly for the growth of healthy teeth and bones. Calcium phosphate is the main component of bone. also, it regulates the contraction of the skeletal and cardiac muscle, it is necessary in the coagulation of the blood, stimulates the hormonal secretion, helps with the permeability of the cell membranes so that they can have an exchange with the medium, among them the absorption of the b12 vitamin"
+        information: "It is the fifth most abundant metal in the earth's crust (4.1%). It is not uncombined in nature, but is abundantly present as limestone (calcium carbonate).\n Calcium is essential for all living beings, particularly for the growth of healthy teeth and bones. Calcium phosphate is the main component of bone. also, it regulates the contraction of the skeletal and cardiac muscle, it is necessary in the coagulation of the blood, stimulates the hormonal secretion, helps with the permeability of the cell membranes so that they can have an exchange with the medium, among them the absorption of the b12 vitamin"
+            
     },
     {
         name: 'STRONTIUM',
@@ -433,7 +433,7 @@ const elements = [{
             { scaleZ: 0.3 },
         ],
         periodo: 5,
-        flayer: "",
+        flayer: "Flayers/molybdenum.png",
         information: "Part of the molybdenum is obtained as a byproduct of the production of tungsten and copper. Of the approximately 8 mg in the body, the highest concentrations are found in the kidney, liver, small intestine and adrenal glands.\n" +
             "It is toxic in large quantities, the deficiency of MoCo cofactor due to genetic mutations is known and can lead to rapid neurodegeneration. There are about 50 different enzymes used by plants and animals that contain molybdenum. One of them is nitrogenase, which is found in nitrogen-fixing bacteria that make nitrogen from the air available to plants. Leguminous plants have root nodules that contain these nitrogen-fixing bacteria."
     },
@@ -1268,8 +1268,8 @@ const elements = [{
   },
   {
     name: 'CHLORINE',
-    modelPath: './models/mario/mario.glb',
-    texture: "",
+    modelPath: './models/chlorine/piscina.obj',
+    texture: './models/chlorine/piscina.mtl',
     thumbnail: 'Elementos/chlorine.png',
     status: true,
     position: 1,

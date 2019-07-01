@@ -15,17 +15,12 @@ class Element extends React.Component {
 
   }
   handleEnter() {
-    // Animated.timing(this.state.animation, {
-    //   toValue: 1,
-    //   duration: 100,
-    // }).start();
     this.setState(
       {
         hover: true
       }
     );
   }
-
   handleButtonUp = () => {
     Animated.timing(this.state.animation, {
       toValue: 0,
@@ -33,35 +28,7 @@ class Element extends React.Component {
     }).start();
   };
   render() {
-    //ANIMACION 3D
-    /* const heightStyle = {
-      marginTop: this.state.animation.interpolate({
-        inputRange: [0, 1],
-        outputRange: [-15, 0],
-      }),
-      paddingBottom: this.state.animation.interpolate({
-        inputRange: [0, 1],
-        outputRange: [15, 0],
-      }),
-    };
-    const inner = {
-      borderRadius: this.state.animation.interpolate({
-        inputRange: [0, 1],
-        outputRange: [12, 16],
-      }),
-    }; */
-
-
     return (
-      // <View style={styles.button} onEnter={this.handleClick} onExit={this.handleButtonUp}>
-      //   <View style={styles.outer}>
-      //     <Animated.View style={[styles.height, heightStyle]}>
-      //       <Animated.View style={[styles.inner, inner]}>
-      //         <Text style={styles.white}>AIRHORN</Text>
-      //       </Animated.View>
-      //     </Animated.View>
-      //   </View>
-      // </View>
       <View>
         {this.props.elementDetails &&
           <View>
@@ -78,23 +45,9 @@ class Element extends React.Component {
             </View>
           </View>}
       </View>
-      // <View style={styles.container} >
-      //   <Text style={styles.element}>S</Text>
-      //   <Text>Sulfur</Text>
-      //   <Text onEnter={this.handleEnter}
-      //         onExit={this.handleExit}
-      //         style={styles.pesoAtomico}>
-      //           32.06
-      //     </Text>
-      //   { this.state.hover && <Text>Peso atomico</Text> }
-      //   <Text style={styles.numeroAtomico}>
-      //     16
-      //     </Text>
-      // </View>
     )
   }
 }
-
 const styles = StyleSheet.create({
 
   image: {
