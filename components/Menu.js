@@ -31,6 +31,7 @@ class Menu extends React.Component {
   render() {
     return (
       <View>
+        
         {this.state.tutorial ? <Tutorial skip={this.handleSkip} /> : <PeriodicTable help={this.handleHelpClick} />}
       </View>
     )
@@ -46,16 +47,53 @@ class PeriodicTable extends React.Component {
       { height: 6 }, { height: 6 }, { height: 6 }, { height: 6 }, { height: 6 },
       { height: 7 },
     ];
+    clicked = false;
+    this.state = { 
+      showHelp:false,
+      periodo:0
+    }
     this.periodo = [1, 2, 3, 4, 5, 6, 7];
     this.handleHelpClick = this.handleHelpClick.bind(this);
+    this.showHelp = this.showHelp.bind(this);
+
   }
   handleHelpClick() {
     setElement(0, null);
     this.props.help();
   }
+  showHelp(periodon)
+  {
+    console.log(periodon);
+    if (!this.clicked)
+    {
+      if(this.state.showHelp)
+      {
+        this.setState({ showHelp: false })
+        this.clicked = true;
+      }else
+      {
+        this.setState({ periodo:periodon,showHelp: true })
+      }
+    }
+  }
+
   render() {
     return (
       <View>
+        {this.state.showHelp && 
+        <View style={{width: 1200}}> 
+          <View style={{ flexDirection: 'row', marginLeft: (this.state.periodo)*(WIDTH-10)}}>
+            <Text style={styles.white}>Now  you might move on to the right direction to watch whole the virtual envirtoment</Text>
+          <View style={styles.buttonBox} >
+            <View style={ {flex: 1, flexWrap: 'wrap', flexDirection: 'row'} }>
+              <Image source={asset("Flecha.png")} style={{height: 45,width: 30}} />
+              <Image source={asset("Flecha.png")} style={{ height: 45, width: 30 }}/>
+            </View>
+          </View>
+        </View>
+        </View>
+        }
+        
         <View style={{ flex: 1, flexWrap: 'wrap', flexDirection: 'row', }}>
           <View style={{ width: WIDTH / 2, height: 7 * HEIGHT, alignItems: "center", marginTop: HEIGHT / 2 + 8 }} >
             {this.periodo.map((p) => {
@@ -69,7 +107,7 @@ class PeriodicTable extends React.Component {
                 {elements.filter((element) => {
                   return element.periodo === index
                 }).map((element, index2) => {
-                  return (<ElementButton key={"KEY" + index + index2} element={element} index={index} />)
+                  return (<ElementButton key={"KEY" + index + index2} element={element} index={index} showHelp={this.showHelp}/>)
                 })}
               </View>)
           })
@@ -134,6 +172,7 @@ class ElementButton extends React.Component {
         source: asset('element.mp3'),
       });
       setElement(this.props.index, this.props.element);
+      this.props.showHelp(this.props.element.periodo);
     }
   }
   render() {
@@ -244,6 +283,7 @@ class Tutorial extends React.Component {
             duration={DURATION}
             onClick={this.handleBack}>
             <Image source={asset("Flecha_left.png")} style={{ width: 60, height: 45 }} />
+            
           </GazeButton>
           <GazeButton style={styles.buttonBox}
             duration={DURATION}
